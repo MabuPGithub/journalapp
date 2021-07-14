@@ -35,7 +35,7 @@ class TasksController < ApplicationController
 
   # PUT categories/1/tasks/1
   def update
-    if @task.update_attributes(task_params)
+    if @task.update(task_params)
       redirect_to([@task.category, @task], notice: 'Task was successfully updated.')
     else
       render action: 'edit'

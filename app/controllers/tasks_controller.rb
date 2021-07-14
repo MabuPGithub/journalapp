@@ -24,6 +24,7 @@ class TasksController < ApplicationController
   # POST categories/1/tasks
   def create
     @task = @category.tasks.build(task_params)
+    @task.user_id = current_user.id
 
     if @task.save
       redirect_to([@task.category, @task], notice: 'Task was successfully created.')
@@ -51,7 +52,7 @@ class TasksController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_category
-      @category = Category.find(params[:category_id])
+      @category = current_user.categories.find(params[:category_id])
     end
 
     def set_task

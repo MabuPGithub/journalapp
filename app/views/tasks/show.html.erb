@@ -15,16 +15,6 @@
   <%= @task.status %>
 </p>
 
-<p>
-  <b>Category:</b>
-  <%= @task.category %>
-</p>
-
-<p>
-  <b>User:</b>
-  <%= @task.user %>
-</p>
-
 
 <%= link_to 'Edit', edit_category_task_path(@task.category, @task) %> |
 <%= link_to 'Back', category_tasks_path(@task.category) %>

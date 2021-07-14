@@ -27,7 +27,7 @@ class TasksController < ApplicationController
     @task.user_id = current_user.id
 
     if @task.save
-      redirect_to([@task.category, @task], notice: 'Task was successfully created.')
+      redirect_to(@task.category)
     else
       render action: 'new'
     end
@@ -36,7 +36,7 @@ class TasksController < ApplicationController
   # PUT categories/1/tasks/1
   def update
     if @task.update(task_params)
-      redirect_to([@task.category, @task], notice: 'Task was successfully updated.')
+      redirect_to(@task.category)
     else
       render action: 'edit'
     end

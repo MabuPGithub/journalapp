@@ -20,7 +20,21 @@
 <%= link_to 'Edit', edit_category_path(@category) %> |
 <%= link_to 'Back', categories_path %>
 
-
+<hr>
+<table>
+  <tr>
+    <th>!!Task Priority!!</th>
+  </tr>
+  
+  <% @category.tasks.each do |task| %>
+    <% if task.deadline == Date.today %>
+    <tr>
+    <td><%= task.name %></td>
+    <td><%= link_to 'Show', [task.category, task] %></td>
+    </tr>
+    <% end %>
+    <% end %>
+</table>
 <hr>
 
 <h1>Listing tasks</h1>

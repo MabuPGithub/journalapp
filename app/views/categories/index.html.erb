@@ -2,6 +2,8 @@
 
 <h1><%= current_user.first_name %>'s Categories</h1>
 
+<%= button_to "logout", destroy_user_session_path, method: :delete  %>
+
 <%= link_to 'New Category', new_category_path %>
 
 <table>

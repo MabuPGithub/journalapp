@@ -3,7 +3,7 @@
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="nav navbar-nav ml-auto">
       <li class="nav-item active">
-        <%= button_to "Logout", destroy_user_session_path, :class => "btn btn-primary", method: :delete  %>
+        <%= button_to "Logout", destroy_user_session_path, :class => "btn btn btn-secondary", method: :delete  %>
       </li>
     </ul>
   </div>
@@ -39,6 +39,6 @@
     <%= f.date_field :deadline %>
   </div>
   <div class="actions">
-    <%= f.submit class: "btn btn-primary"%>
+    <%= f.submit class: "btn btn btn-secondary"%>
   </div>
 <% end %>

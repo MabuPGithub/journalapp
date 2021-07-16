@@ -28,7 +28,6 @@
         <% if @task.errors.any? %>
           <div id="error_explanation">
             <h2><%= pluralize(@task.errors.count, "error") %> prohibited this task from being saved:</h2>
-
             <ul>
             <% @task.errors.full_messages.each do |msg| %>
               <li><%= msg %></li>
@@ -38,13 +37,28 @@
         <% end %>
         <%= f.hidden_field :status, value: 'not-started' %>
         <div class="input-group">
-          <%= f.text_field :name, class: 'form-control', placeholder: 'Enter task name...' %>
-          <div class="input-group-append">
-            <%= f.submit class: 'btn btn-secondary' %>
-          </div>
+          <%= render 'tasks/form' %>
         </div>
       <% end %>
     </div>
+
+    <hr>
+
+    <h4>!!Task Priority!!</h4>
+      <div class="card mb-3">
+        <div class="card-body">
+          <div class="d-flex justify-content-between">
+            <% @category.tasks.each do |task| %>
+              <% if task.deadline == Date.today %>
+                <%= task.name %>
+                <%= link_to 'View task', [task.category, task] %>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    
+    <hr>
 
     <h4>Tasks</h4>
     <% @category.tasks.each do |task| %>
@@ -61,6 +75,8 @@
               <span><%= task.name %></span>
             </h5>
             <p><%= task.description %></p>
+            <p>Status: <%= task.status %></p>
+            <p>Deadline: <%= task.deadline %></p>
           </div>
         </div>
       <% end %>
@@ -68,136 +84,3 @@
 
   </div>
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<hr>
-
-<h1>!!Task Priority!!</h1>
-<table>
-  
-  <% @category.tasks.each do |task| %>
-    <% if task.deadline == Date.today %>
-    <tr>
-    <td><%= task.name %></td>
-    <td><%= link_to 'Show', [task.category, task] %></td>
-    </tr>
-    <% end %>
-    <% end %>
-</table>
-
-<hr>
-
-<h1>New task</h1>
-
-<%= render 'tasks/form' %>
-
-<hr>
-
-<h1>Listing tasks</h1>
-
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Description</th>
-    <th>Status</th>
-    <th>Deadline</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @category.tasks.each do |task| %>
-  <% if task.persisted? %>
-  <tr>
-    <td><%= task.name %></td>
-    <td><%= task.description %></td>
-    <td><%= task.status %></td>
-    <td><%= task.deadline %></td>
-    <td><%= link_to 'Show', [task.category, task] %></td>
-    <td><%= link_to 'Edit', edit_category_task_path(task.category, task) %></td>
-    <td><%= link_to 'Destroy', [task.category, task], method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-  <% end %>
-  <% end %>
-</table>
-
-<br />
-
-
-

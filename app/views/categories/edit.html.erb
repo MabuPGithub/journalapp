@@ -1,6 +1,10 @@
-<h1>Editing Category</h1>
+<%= link_to 'Back', @category, class: 'btn btn-secondary mb-3' %>
+<div class="card">
+  <div class="card-body">
+    <h2 class='card-title mb-4'>
+      <span>Editing Category</span>
+    </h2>
 
-<%= render 'form', category: @category %>
-
-<%= link_to 'Show', @category %> |
-<%= link_to 'Back', categories_path %>
+    <%= render 'form', category: @category %>
+  </div>
+</div>

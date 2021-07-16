@@ -11,6 +11,130 @@
 
 <p id="notice"><%= notice %></p>
 
+<%= link_to 'Back', categories_path, class: 'btn btn-secondary mb-3' %>
+<div class="card">
+  <div class="card-body">
+    <h2 class='card-title d-flex justify-content-between mb-4'>
+      <span><%= @category.name %></span>
+      <div>
+        <%= link_to 'Edit', edit_category_path(@category), class: 'btn btn-primary' %>
+        <%= link_to 'Destroy', @category, method: :delete, class: 'btn btn-danger', data: { confirm: 'Are you sure?' } %>
+      </div>
+    </h2>
+
+    <div class="mb-4">
+      <h6>Add task</h6>
+      <%= form_for([@task.category, @task]) do |f| %>
+        <%= f.hidden_field :status, value: 'not-started' %>
+        <div class="input-group">
+          <%= f.text_field :name, class: 'form-control', placeholder: 'Enter task name...' %>
+          <div class="input-group-append">
+            <%= f.submit class: 'btn btn-primary' %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+
+    <h4>Tasks</h4>
+    <% @category.tasks.each do |task| %>
+      <% if task.persisted? %>
+        <div class="card mb-3">
+          <div class="card-body">
+            <div class="d-flex justify-content-between">
+              <div>
+                <%= link_to 'Edit', edit_category_task_path(task.category, task), class: 'btn btn-light btn-sm' %>
+                <%= link_to 'Destroy', [task.category, task], method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-dark btn-sm' %>
+              </div>
+            </div>
+            <h5 class='card-title mb-2'>
+              <span><%= task.name %></span>
+            </h5>
+            <p><%= task.description %></p>
+          </div>
+        </div>
+      <% end %>
+    <% end%>
+
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <h1><%= @category.name %></h1>
 
 <p>

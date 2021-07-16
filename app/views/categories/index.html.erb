@@ -14,21 +14,22 @@
 <div class="card">
   <div class="card-body">
     <h2 class='card-title'>
-      <h1><%= current_user.first_name %>'s Categories</h1>
+      <span><%= current_user.first_name %>'s Categories</span>
       <%= link_to 'New Category', new_category_path, class: 'btn btn-primary' %>
     </h2>
 
     <% @categories.each do |category| %>
       <%= link_to category, class: 'text-decoration-none' do %>
-        <div class="card category-card">
+        <div class="card">
           <div class="card-body">
-            <h5 class='card-title text-dark'><b><%= category.name %></b></h5>
+            <h5><b><%= category.name %></b></h5>
             <p class='text-secondary'><%= category.description %></p>
+            <div class="button_group">
+              <%= link_to 'Edit', edit_category_path(category), class: 'btn btn-primary' %>
+              <%= link_to 'Destroy', category, class: 'btn btn-danger', method: :delete, data: { confirm: 'Are you sure?' } %>
+            </div>
           </div>
-          <%= link_to 'Edit', edit_category_path(category), class: 'btn btn-primary' %>
-          
-          <%= link_to 'Destroy', category, class: 'btn btn-primary', method: :delete, data: { confirm: 'Are you sure?' } %>
-        </div>
+          </div>
       <% end %>
     <% end %>
   </div>

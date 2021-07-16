@@ -2,7 +2,17 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
-// button
 body{
-    margin: 30px;
+    margin: 100px;
+    background-color: rgb(167, 185, 179);
+}
+
+
+.card-body{
+    display: inline;
+}
+
+.card-title{
+    display: flex;
+    justify-content: space-between;
 }

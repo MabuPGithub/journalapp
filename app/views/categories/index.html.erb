@@ -24,7 +24,7 @@
           <div class="card-body">
             <h5><b><%= category.name %></b></h5>
             <p class='text-secondary'><%= category.description %></p>
-            <div class="button_group">
+            <div class="button-group1">
               <%= link_to 'Edit', edit_category_path(category), class: 'btn btn-secondary' %>
               <%= link_to 'Destroy', category, class: 'btn btn-dark', method: :delete, data: { confirm: 'Are you sure?' } %>
             </div>

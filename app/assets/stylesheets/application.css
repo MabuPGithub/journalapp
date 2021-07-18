@@ -13,3 +13,32 @@
  *= require_tree .
  *= require_self
  */
+
+ .reg-login{
+    display: flex;
+    justify-content: center;
+ }
+ .reg-signup{
+    display: flex;
+    justify-content: center;
+}
+
+#submit{
+    margin: 10px;
+}
+
+.form-submit{
+    display: flex;
+    justify-content: center;
+}
+
+.title-login{
+    color: white;
+    background-color: dimgray;
+    display: flex;
+    justify-content: center;
+}
+
+.title-app{
+    margin: 30px;
+}

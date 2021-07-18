@@ -14,6 +14,10 @@
  *= require_self
  */
 
+body{
+    background-image: url(bg_main-7c76a33.jpg);
+}
+
  .reg-login{
     display: flex;
     justify-content: center;

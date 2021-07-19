@@ -38,6 +38,19 @@ class JournalappFlowTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
+  test "can delete category" do
+    post user_session_path, params: {user: {
+        email:    users(:one).email,
+        password: "password"
+    }}
+    delete "/categories/#{categories(:one).id}", params: {category: {
+      id: categories(:one).id
+    }}
+    assert_response :redirect
+    follow_redirect!
+    assert_response :success
+  end
+
   test "can see the his category with task + task priority page" do
     post user_session_path, params: {user: {
         email:    users(:one).email,
@@ -46,7 +59,7 @@ class JournalappFlowTest < ActionDispatch::IntegrationTest
     get "/categories/#{categories(:one).id}"
     assert_response :success
   end
-
+  
   test "can add task" do
     post user_session_path, params: {user: {
         email:    users(:one).email,
@@ -69,6 +82,8 @@ class JournalappFlowTest < ActionDispatch::IntegrationTest
     patch "/categories/#{categories(:one).id}/tasks/#{tasks(:one).id}",
     params: { task: { name: "can't update task"} }
     assert_not_equal( "can't update task", temp)
+    assert_response :redirect
+    follow_redirect!
     assert_response :success
   end
 
@@ -85,6 +100,19 @@ class JournalappFlowTest < ActionDispatch::IntegrationTest
         email:    "myles@email.com",
         password: "pass"
     }}
+    assert_response :success
+  end
+
+  test "can delete task" do
+    post user_session_path, params: {user: {
+        email:    users(:one).email,
+        password: "password"
+    }}
+    delete "/categories/#{categories(:one).id}/tasks/#{tasks(:one).id}", params: {task: {
+      id: tasks(:one).id
+    }}
+    assert_response :redirect
+    follow_redirect!
     assert_response :success
   end
 end
